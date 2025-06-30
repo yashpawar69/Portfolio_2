@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Certificate } from 'crypto'
 import { GraduationCap } from 'lucide-react'
 
 const educationHistory = [
