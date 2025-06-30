@@ -42,7 +42,7 @@ const ScrollAnimationWrapper = ({ children, className }: ScrollAnimationWrapperP
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-700 ease-in-out',
+        'transition-all duration-1000 ease-in-out',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
         className
       )}
