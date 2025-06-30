@@ -26,7 +26,7 @@ const educationHistory = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-20 md:py-28">
+    <section id="education" className="py-20 md:py-28 bg-education-pattern bg-fixed">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 font-headline">My Education</h2>
         <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
