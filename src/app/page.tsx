@@ -7,6 +7,7 @@ import TestimonialsSection from '@/components/testimonials-section';
 import BlogSection from '@/components/blog-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
+import ScrollAnimationWrapper from '@/components/scroll-animation-wrapper';
 
 export default function Home() {
   return (
@@ -14,12 +15,24 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <EducationSection />
-        <TestimonialsSection />
-        <BlogSection />
-        <ContactSection />
+        <ScrollAnimationWrapper>
+          <SkillsSection />
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <ProjectsSection />
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <EducationSection />
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <TestimonialsSection />
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <BlogSection />
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <ContactSection />
+        </ScrollAnimationWrapper>
       </main>
       <Footer />
     </div>
