@@ -8,6 +8,7 @@
  */
 
 import { ai } from '@/ai/genkit';
+import clientPromise from '@/lib/mongodb';
 import { z } from 'zod';
 
 const ContactFormInputSchema = z.object({
@@ -35,26 +36,14 @@ const contactFlow = ai.defineFlow(
     outputSchema: ContactFormOutputSchema,
   },
   async (input) => {
-    console.log('Received contact form submission:', input);
-
-    // In a real application, you would add your email-sending logic here.
-    // For example, using a service like Nodemailer, SendGrid, or Resend.
-    //
-    // Example with a hypothetical email service:
-    // try {
-    //   await emailService.send({
-    //     to: 'csyashp@gmail.com',
-    //     from: 'portfolio-noreply@yourdomain.com',
-    //     subject: `New message from ${input.name}`,
-    //     text: `From: ${input.name} <${input.email}>\n\n${input.message}`,
-    //   });
-    //   return { success: true, message: 'Message sent successfully!' };
-    // } catch (error) {
-    //   console.error('Failed to send email:', error);
-    //   return { success: false, message: 'Failed to send message.' };
-    // }
-
-    // For now, we'll just simulate a success response.
-    return { success: true, message: 'Message received and logged to console.' };
+    try {
+      const client = await clientPromise;
+      const db = client.db("portfolio");
+      await db.collection("contacts").insertOne({ ...input, createdAt: new Date() });
+      return { success: true, message: 'Message sent successfully!' };
+    } catch (error) {
+      console.error('Failed to save contact message:', error);
+      return { success: false, message: 'Failed to send message.' };
+    }
   }
 );
